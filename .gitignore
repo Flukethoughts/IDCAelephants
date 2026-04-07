@@ -1,0 +1,10 @@
+*.pt
+*.onnx
+*.hef
+*.whl
+__pycache__/
+*.pyc
+datasets/
+runs/
+venv/
+*.log
