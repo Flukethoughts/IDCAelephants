@@ -23,7 +23,7 @@ Stock YOLO models ship with **80 classes**. Your security camera cares about may
 | 4 | truck | Delivery, or someone backing into your mailbox |
 | 5 | bird | Not a threat, but responsible for 40% of your false alarms |
 | 6 | cat | Yours, or the neighborhood's. Either way, it's judging you |
-| 7 | dog | Good boy. Or bad boy. The model doesn't judge |
+| 7 | dog | Good boy, but bad dog. The model doesn't judge |
 
 ## What It Doesn't Detect
 
