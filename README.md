@@ -98,11 +98,11 @@ objects:
 
 Sure. But:
 
-1. **Wasted compute** — the model still runs inference on all 80 classes every frame. NMS processes 80 classes. Your Hailo/GPU/TPU is thinking about surfboards when it could be thinking harder about that person at your door.
+1. **Higher accuracy on what matters** — during training, the model's learned representations are optimized for 8 classes instead of spread across 80. The detection head focuses its capacity on distinguishing the objects you actually care about. This is the primary benefit and it's measurable — our mAP50-95 on security-relevant classes exceeds the stock 80-class model trained on the same architecture.
 
-2. **Lower accuracy** — 56.9M parameters spread across 80 classes means ~711K params per class. Same parameters across 8 classes means ~7.1M params per class. Ten times more brainpower per object you actually care about.
+2. **Faster post-processing** — NMS (Non-Maximum Suppression) runs per-class. Processing 8 classes instead of 80 is genuinely faster, especially on edge devices where NMS runs on CPU. The output tensor is also smaller (8 class predictions per anchor vs 80).
 
-3. **Faster NMS** — post-processing 8 classes instead of 80 is meaningfully faster, especially on edge devices.
+3. **Note on backbone compute** — to be clear, the backbone and neck (where ~90% of inference FLOPs happen) run identically regardless of class count. The gains are in accuracy from focused training and speed from reduced post-processing, not from the convolution layers running faster.
 
 4. **No elephants** — this one speaks for itself.
 
